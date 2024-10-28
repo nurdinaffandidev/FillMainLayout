@@ -144,6 +144,8 @@ open class FillMainContentLayout: BaseLayout {
             constraints.append(constraint2)
         }
         
+        NSLayoutConstraint.activate(constraints)
+        
         // MARK: - FillerView contraints
         NSLayoutConstraint.activate([
             fillerView.topAnchor.constraint(equalTo: mainContentStackView.bottomAnchor),
