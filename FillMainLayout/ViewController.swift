@@ -42,8 +42,5 @@ class ViewController: FillMainContentViewController {
         mainContentStackView.addArrangedSubview(mainContent)
         mainContentStackView.addArrangedSubview(subContent)
         bottomContentStackView.addArrangedSubview(ctaButton)
-        
-        ctaButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        ctaButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
     }
 }
