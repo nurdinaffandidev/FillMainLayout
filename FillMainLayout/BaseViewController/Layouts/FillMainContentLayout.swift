@@ -11,7 +11,7 @@ import UIKit
 open class FillMainContentLayout: BaseLayout {
     // MARK: - Keyboard related
     open var floatBottomContentStackWhenKeyboardIsUp = false
-    open var constrainToSafeAreaLayoutGuide = true
+    open var isConstrainedToSafeAreaLayoutGuide = true
     
     open var rootView: UIView {
         guard let view = view else {
@@ -99,7 +99,7 @@ open class FillMainContentLayout: BaseLayout {
         guard let view = view else { return }
         // MARK: - ScrollView contraints
         scrollTopAnchorFullConstraint = scrollView.topAnchor.constraint(equalTo: view.topAnchor)
-        scrollTopAnchorSafeAreaConstraint = constrainToSafeAreaLayoutGuide ?
+        scrollTopAnchorSafeAreaConstraint = isConstrainedToSafeAreaLayoutGuide ?
         scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor) :
         scrollView.topAnchor.constraint(equalTo: view.topAnchor)
         updateTopAnchorConstraints()
@@ -122,7 +122,7 @@ open class FillMainContentLayout: BaseLayout {
          1. if content's height is less than screen height, the cta button is docked to the bottom
          2. if content's height is more that screen height, the cta button resides after the last element and user needs to scroll down to see cta button
         */
-        if constrainToSafeAreaLayoutGuide {
+        if isConstrainedToSafeAreaLayoutGuide {
             let constraint = stackView.safeAreaLayoutGuide.heightAnchor.constraint(
                 greaterThanOrEqualTo: scrollView.safeAreaLayoutGuide.heightAnchor
             )
@@ -153,7 +153,7 @@ open class FillMainContentLayout: BaseLayout {
             fillerView.widthAnchor.constraint(equalTo: stackView.widthAnchor)
         ])
         
-        if constrainToSafeAreaLayoutGuide {
+        if isConstrainedToSafeAreaLayoutGuide {
             NSLayoutConstraint.activate([
                 fillerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
                 fillerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
@@ -167,7 +167,7 @@ open class FillMainContentLayout: BaseLayout {
         
         // MARK: - BottomContentStackView contraints
         bottomContentStackView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
-        if constrainToSafeAreaLayoutGuide {
+        if isConstrainedToSafeAreaLayoutGuide {
             NSLayoutConstraint.activate([
                 bottomContentStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
                 bottomContentStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
